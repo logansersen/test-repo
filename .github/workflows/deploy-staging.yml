@@ -1,0 +1,27 @@
+name: Deploy to Staging Environment
+
+# Trigger manually from any branch OR automatically on push to next/deploy-test
+on:
+  workflow_dispatch: # Allows manual triggering from specific branches
+  push:
+    branches:
+      - next
+      - deploy-test
+
+jobs:
+  deploy:
+    name: Deploy Job
+    runs-on: ubuntu-latest
+    # IMPORTANT: Link this job to the environment
+    environment: staging # Use the exact name you gave your environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Simulate Deployment
+        run: |
+          echo "Attempting deployment to the '${{ job.environment }}' environment..."
+          echo "Triggered from branch: ${{ github.ref_name }}"
+          echo "Deployment would happen here."
+          echo "Deployment successful (simulation)."
