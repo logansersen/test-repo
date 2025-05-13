@@ -13,7 +13,7 @@ jobs:
     name: Deploy Job
     runs-on: ubuntu-latest
     # IMPORTANT: Link this job to the environment
-    environment: staging # Use the exact name you gave your environment
+    environment: test-env # Use the exact name you gave your environment
 
     steps:
       - name: Checkout code
